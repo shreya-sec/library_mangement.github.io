@@ -28,5 +28,9 @@ def metrics():
         generate_latest(),
         content_type=CONTENT_TYPE_LATEST
     )
+@app.route("/search")
+def search():
+    REQUEST_COUNT.labels(endpoint="/search").inc()
+    return "Library Book Search"
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
