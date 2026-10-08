@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: library-app-deployment
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: library-app
+
+  template:
+    metadata:
+      labels:
+        app: library-app
+
+    spec:
+      containers:
+        - name: library-app
+          image: library-monitoring-system:v2
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 5000
